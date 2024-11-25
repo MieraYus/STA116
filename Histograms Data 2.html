@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Allowance Histogram</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Monthly Allowance Histogram</h1>
+    <canvas id="allowanceHistogram" width="400" height="200"></canvas>
+    <script>
+        // Data for Monthly Allowance Histogram
+        const allowanceData = {
+            labels: ["< RM100", "RM100-300", "RM300-500", "RM500-700", "> RM700"],
+            datasets: [{
+                label: "Allowance (%)",
+                data: [3.8, 38.5, 26.9, 15.4, 15.4],
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Options for Allowance Histogram
+        const allowanceOptions = {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Percentage (%)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Allowance Range (RM)'
+                    }
+                }
+            }
+        };
+
+        // Create Allowance Histogram
+        const allowanceCtx = document.getElementById('allowanceHistogram').getContext('2d');
+        new Chart(allowanceCtx, {
+            type: 'bar',
+            data: allowanceData,
+            options: allowanceOptions
+        });
+    </script>
+</body>
+</html>

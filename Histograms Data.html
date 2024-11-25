@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Spending Histogram</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Monthly Spending Histogram</h1>
+    <canvas id="spendingHistogram" width="400" height="200"></canvas>
+    <script>
+        // Data for Monthly Spending Histogram
+        const spendingData = {
+            labels: ["< RM100", "RM100-200", "RM200-300", "RM300-400", "> RM500"],
+            datasets: [{
+                label: "Spending (%)",
+                data: [5.8, 32.7, 19.2, 21.2, 21.2],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Options for Spending Histogram
+        const spendingOptions = {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Percentage (%)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Spending Range (RM)'
+                    }
+                }
+            }
+        };
+
+        // Create Spending Histogram
+        const spendingCtx = document.getElementById('spendingHistogram').getContext('2d');
+        new Chart(spendingCtx, {
+            type: 'bar',
+            data: spendingData,
+            options: spendingOptions
+        });
+    </script>
+</body>
+</html>
